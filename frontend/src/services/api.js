@@ -1,10 +1,8 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
-
 // Create axios instance with base URL
-export const api = axios.create({
-  baseURL: API_URL,
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL || "/api",
   headers: {
     "Content-Type": "application/json",
   },
@@ -20,3 +18,5 @@ export const deleteContact = (id) => api.delete(`/contacts/${id}`);
 
 // Weather API service
 export const getWeather = (city) => api.get(`/weather/${city}`);
+
+export default api;
