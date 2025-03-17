@@ -18,7 +18,7 @@ const app = express();
 const corsOptions = {
   origin: [
     "http://localhost:5173", // Vite dev server
-    "https://rest-contact-app.vercel.app", // Production frontend
+    "https://rest-contact-app-frontend.vercel.app", // Production frontend
     "https://*.vercel.app", // All Vercel subdomains
   ],
   credentials: true,
@@ -38,13 +38,7 @@ app.use("/api/weather", weatherRoutes);
 // Error handler
 app.use(errorHandler);
 
-// For Vercel deployment
-export default app;
-
-// For local development
-if (process.env.NODE_ENV !== "production") {
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-}
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
+});
