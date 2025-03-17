@@ -98,11 +98,63 @@ A full-stack contact management application with weather integration.
 
 ### Docker Setup
 
-1. Build and run with Docker Compose:
+1. Make sure Docker Desktop is installed and running on your machine.
+
+2. Update the `.env` file in the root directory with your MongoDB URI and OpenWeatherMap API key:
+
+   ```
+   MONGO_URI=mongodb+srv://yourusername:yourpassword@cluster.mongodb.net/contactsapp
+   WEATHER_API_KEY=your_openweathermap_api_key
+   ```
+
+3. Build and run the application with Docker Compose:
+
    ```
    docker-compose up --build
    ```
+
    This will start both frontend and backend services.
+
+4. Access the application:
+
+   - Frontend: http://localhost:80
+   - Backend API: http://localhost:5000/api
+
+5. To stop the containers:
+
+   ```
+   docker-compose down
+   ```
+
+6. To rebuild after making changes:
+   ```
+   docker-compose up --build
+   ```
+
+### Docker Commands Reference
+
+- List running containers:
+
+  ```
+  docker ps
+  ```
+
+- View container logs:
+
+  ```
+  docker logs <container_id>
+  ```
+
+- Access container shell:
+
+  ```
+  docker exec -it <container_id> sh
+  ```
+
+- Stop all containers:
+  ```
+  docker stop $(docker ps -aq)
+  ```
 
 ## API Endpoints
 
@@ -119,3 +171,23 @@ A full-stack contact management application with weather integration.
 - `GET /api/weather/:city` - Get weather data for a city
 
 ## Project Structure
+
+```
+contact-app/
+├── frontend/                # React frontend
+│   ├── src/
+│   │   ├── components/      # UI components
+│   │   ├── redux/           # Redux store and slices
+│   │   ├── services/        # API services
+│   │   └── App.jsx          # Main app component
+│   └── ...
+├── backend/                 # Express backend
+│   ├── config/              # Configuration files
+│   ├── controllers/         # Request handlers
+│   ├── models/              # Database models
+│   ├── routes/              # API routes
+│   ├── middleware/          # Custom middleware
+│   └── server.js            # Entry point
+├── docker-compose.yml       # Docker configuration
+└── .github/                 # GitHub Actions workflows
+```
