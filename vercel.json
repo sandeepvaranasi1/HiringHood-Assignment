@@ -24,6 +24,8 @@
     }
   ],
   "env": {
-    "NODE_ENV": "production"
+    "NODE_ENV": "production",
+    "MONGO_URI": "mongodb+srv://sandeepvaranasi568:rE5eD8SflNEh1Phf@mongocluster.6xdxb.mongodb.net/?retryWrites=true&w=majority&appName=MongoCluster",
+    "WEATHER_API_KEY": "a7681abb726cdfefa4040bb9f108276e"
   }
 }
